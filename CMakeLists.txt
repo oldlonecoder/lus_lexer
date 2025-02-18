@@ -11,6 +11,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(TARGET_DIR ${FRAME}/${WORK})
+message (STATUS "TARGET_DIR: ${TARGET_DIR}")
 
 set(HEADERS
     ${TARGET_DIR}/export.h
@@ -35,7 +36,7 @@ add_library(${OUT} STATIC
 
 target_include_directories(${OUT} PUBLIC
                            "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>"
-                           $<INSTALL_INTERFACE:include/${TARGET_DIR}>
+                           "$<INSTALL_INTERFACE:include/${TARGET_DIR}>"
 )
 
 target_compile_definitions(${OUT} PUBLIC "${OUT}_DEBUG=$<CONFIG:Debug>")
@@ -62,7 +63,7 @@ install(TARGETS ${OUT}
         RUNTIME DESTINATION bin
         )
 
-INSTALL(FILES ${HEADERS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/${TAGET_DIR}")
+INSTALL(FILES ${HEADERS} DESTINATION "${CMAKE_INSTALL_PREFIX}/include/${TARGET_DIR}")
 
 
 add_custom_target("uninstall_${OUT}" COMMENT "Uninstall installed files")
