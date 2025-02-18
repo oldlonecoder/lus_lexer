@@ -11,10 +11,10 @@ namespace lus
 
 rem::cc lexer::exec()
 {
-    //journal::debug() << " Verify config data:" << journal::eol;
+    journal::debug() << " Verify config data:" << journal::eol;
     if(!m_config.production)
     {
-        //journal::error() << " config data is empty!" << journal::eol;
+        journal::error() << " config data is empty!" << journal::endl;
         return rem::cc::null_ptr;
     }
 
