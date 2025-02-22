@@ -26,7 +26,7 @@ set(OUT ${FRAME}_${WORK})
 add_library(${OUT} STATIC
 
     ${HEADERS}
-    
+
     ${TARGET_DIR}/lexer_types.cc
     ${TARGET_DIR}/token_data.cc
     ${TARGET_DIR}/tokens_table.cc
@@ -50,7 +50,7 @@ IF (EXISTS "${CMAKE_CURRENT_BINARY_DIR}/compile_commands.json")
 ENDIF ()
 
 # static libluss.a should have been put into the current project archive file (libluss.io.a). So no need to link again with luss.a in the other project.
-target_link_libraries(${OUT} ${CMAKE_DL_LIBS} lus_iolistener)
+target_link_libraries(${OUT} ${CMAKE_DL_LIBS} lus lus_io)
 
 
 
